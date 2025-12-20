@@ -19,7 +19,9 @@ import { Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 
 const ideaSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
-  message: z.string().min(10, "Please describe your idea in at least 10 characters"),
+  message: z
+    .string()
+    .min(10, "Please describe your idea in at least 10 characters"),
 });
 
 type IdeaFormData = z.infer<typeof ideaSchema>;
@@ -27,7 +29,9 @@ type IdeaFormData = z.infer<typeof ideaSchema>;
 export function IdeaSubmissionForm() {
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
   const {
@@ -61,7 +65,7 @@ export function IdeaSubmissionForm() {
 
       setSubmitStatus("success");
       reset();
-      
+
       // Close dialog after 2 seconds on success
       setTimeout(() => {
         setOpen(false);
@@ -99,22 +103,28 @@ export function IdeaSubmissionForm() {
             letterSpacing: "0.15em",
           }}
         >
-          Submit Project Idea
+          I have an idea...
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px] bg-black border-white/10">
         <DialogHeader>
-          <DialogTitle className="text-white tracking-wider uppercase text-sm mb-2" style={{
-            fontFamily: "'Helvetica Neue', 'Arial', sans-serif",
-            fontWeight: "300",
-            letterSpacing: "0.15em",
-          }}>
+          <DialogTitle
+            className="text-white tracking-wider uppercase text-sm mb-2"
+            style={{
+              fontFamily: "'Helvetica Neue', 'Arial', sans-serif",
+              fontWeight: "300",
+              letterSpacing: "0.15em",
+            }}
+          >
             Project Proposal
           </DialogTitle>
-          <DialogDescription className="text-white/60 text-sm" style={{
-            fontFamily: "'Helvetica Neue', 'Arial', sans-serif",
-            fontWeight: "300",
-          }}>
+          <DialogDescription
+            className="text-white/60 text-sm"
+            style={{
+              fontFamily: "'Helvetica Neue', 'Arial', sans-serif",
+              fontWeight: "300",
+            }}
+          >
             Submit your project concept
           </DialogDescription>
         </DialogHeader>
@@ -124,13 +134,17 @@ export function IdeaSubmissionForm() {
             <CheckCircle2 className="h-16 w-16 text-green-500 mb-4" />
             <h3 className="text-lg font-semibold mb-2">Thank you!</h3>
             <p className="text-sm text-muted-foreground">
-              Your idea has been submitted successfully. I&apos;ll get back to you soon!
+              Your idea has been submitted successfully. I&apos;ll get back to
+              you soon!
             </p>
           </div>
         ) : (
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+              <label
+                htmlFor="email"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
                 Email
               </label>
               <Input
@@ -150,7 +164,10 @@ export function IdeaSubmissionForm() {
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="message" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+              <label
+                htmlFor="message"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
                 Your Idea
               </label>
               <Textarea
@@ -178,11 +195,7 @@ export function IdeaSubmissionForm() {
               </div>
             )}
 
-            <Button
-              type="submit"
-              className="w-full"
-              disabled={isSubmitting}
-            >
+            <Button type="submit" className="w-full" disabled={isSubmitting}>
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -198,4 +211,3 @@ export function IdeaSubmissionForm() {
     </Dialog>
   );
 }
-

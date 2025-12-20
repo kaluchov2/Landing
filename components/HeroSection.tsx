@@ -12,29 +12,39 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-      <div className={`relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center transition-opacity duration-1000 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
+      <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
         {/* Minimal header */}
-        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light text-white leading-[0.9] mb-8 tracking-tight" style={{
-          fontFamily: "'Helvetica Neue', 'Arial', sans-serif",
-          fontWeight: "300",
-          letterSpacing: "-0.04em",
-        }}>
-          Performance
+        <h1
+          className={`text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light text-white leading-[0.9] mb-8 tracking-tight ${
+            mounted ? "animate-text-fade-in-up-delay-1" : ""
+          }`}
+          style={{
+            fontFamily: "'Helvetica Neue', 'Arial', sans-serif",
+            fontWeight: "300",
+            letterSpacing: "-0.04em",
+          }}
+        >
+          Thank you for being here...
           <br />
-          Driven
         </h1>
-        
-        <p className="text-base sm:text-lg text-gray-400 mb-16 max-w-xl mx-auto leading-relaxed tracking-wide" style={{
-          fontFamily: "'Helvetica Neue', 'Arial', sans-serif",
-          fontWeight: "300",
-          letterSpacing: "0.02em",
-        }}>
-          Engineered for peak performance across all disciplines. Built with precision, designed for results.
+
+        <p
+          className={`text-base sm:text-lg text-gray-400 mb-16 max-w-xl mx-auto leading-relaxed tracking-wide ${
+            mounted ? "animate-text-fade-in-up-delay-2" : ""
+          }`}
+          style={{
+            fontFamily: "'Helvetica Neue', 'Arial', sans-serif",
+            fontWeight: "300",
+            letterSpacing: "0.02em",
+          }}
+        >
+          Feel at home here, feel free to explore and get to know me.
         </p>
 
-        <IdeaSubmissionForm />
+        <div className={mounted ? "animate-text-fade-in-up-delay-3" : ""}>
+          <IdeaSubmissionForm />
+        </div>
       </div>
     </section>
   );
 }
-

@@ -336,3 +336,45 @@
   }
 }
 
+/* Text Animation Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Text Animation Classes */
+.animate-text-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-text-fade-in-up-delay-1 {
+  animation: fadeInUp 1s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-text-fade-in-up-delay-2 {
+  animation: fadeInUp 1s ease-out 0.5s forwards;
+  opacity: 0;
+}
+
+.animate-text-fade-in-up-delay-3 {
+  animation: fadeInUp 1s ease-out 0.8s forwards;
+  opacity: 0;
+}
+
