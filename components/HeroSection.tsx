@@ -5,11 +5,13 @@ import { WaterdropCursor } from "./WaterdropCursor";
 import { useState, useEffect, useRef } from "react";
 
 import { useTheme } from "./ThemeProvider";
+import { useLanguage } from "./LanguageProvider";
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const { theme } = useTheme();
+  const { t } = useLanguage();
 
   useEffect(() => {
     setMounted(true);
@@ -36,12 +38,12 @@ export function HeroSection() {
             letterSpacing: "-0.04em",
           }}
         >
-          Thank you for being here...
+          {t("hero.title")}
           <br />
         </h1>
 
         <p
-          className={`text-base sm:text-lg text-gray-400 mb-16 max-w-xl mx-auto leading-relaxed tracking-wide ${
+          className={`text-base sm:text-lg text-hero-text/60 mb-16 max-w-xl mx-auto leading-relaxed tracking-wide ${
             mounted ? "animate-text-fade-in-up-delay-2" : ""
           }`}
           style={{
@@ -50,7 +52,7 @@ export function HeroSection() {
             letterSpacing: "0.02em",
           }}
         >
-          Feel at home here, feel free to explore and get to know me.
+          {t("hero.subtitle")}
         </p>
 
         <div className={mounted ? "animate-text-fade-in-up-delay-3" : ""}>

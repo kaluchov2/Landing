@@ -26,6 +26,10 @@ const ideaSchema = z.object({
 
 type IdeaFormData = z.infer<typeof ideaSchema>;
 
+import { useLanguage } from "./LanguageProvider";
+
+// ... existing code ...
+
 export function IdeaSubmissionForm() {
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,6 +37,7 @@ export function IdeaSubmissionForm() {
     "idle" | "success" | "error"
   >("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const { t } = useLanguage();
 
   const {
     register,
@@ -103,7 +108,7 @@ export function IdeaSubmissionForm() {
             letterSpacing: "0.15em",
           }}
         >
-          I have an idea...
+          {t("form.button")}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px] bg-black/40 backdrop-blur-xl border-white/10 shadow-2xl">
@@ -116,7 +121,7 @@ export function IdeaSubmissionForm() {
               letterSpacing: "0.15em",
             }}
           >
-            Project Proposal
+            {t("form.modal.title")}
           </DialogTitle>
           <DialogDescription
             className="text-white/60 text-sm"
@@ -125,17 +130,16 @@ export function IdeaSubmissionForm() {
               fontWeight: "300",
             }}
           >
-            Submit your project concept
+            {t("form.modal.desc")}
           </DialogDescription>
         </DialogHeader>
 
         {submitStatus === "success" ? (
           <div className="flex flex-col items-center justify-center py-8 text-center">
             <CheckCircle2 className="h-16 w-16 text-green-500 mb-4" />
-            <h3 className="text-lg font-semibold mb-2 text-white">Thank you!</h3>
+            <h3 className="text-lg font-semibold mb-2 text-white">{t("form.success.title")}</h3>
             <p className="text-sm text-white/60">
-              Your idea has been submitted successfully. I&apos;ll get back to
-              you soon!
+              {t("form.success.desc")}
             </p>
           </div>
         ) : (
@@ -145,7 +149,7 @@ export function IdeaSubmissionForm() {
                 htmlFor="email"
                 className="text-sm font-medium leading-none text-white/80"
               >
-                Email
+                {t("form.email")}
               </label>
               <Input
                 id="email"
@@ -170,7 +174,7 @@ export function IdeaSubmissionForm() {
                 htmlFor="message"
                 className="text-sm font-medium leading-none text-white/80"
               >
-                Your Idea
+                {t("form.idea")}
               </label>
               <Textarea
                 id="message"
@@ -207,10 +211,10 @@ export function IdeaSubmissionForm() {
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Submitting...
+                  {t("form.submitting")}
                 </>
               ) : (
-                "Submit Idea"
+                t("form.submit")
               )}
             </Button>
           </form>

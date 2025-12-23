@@ -30,6 +30,8 @@ function ExampleCard({ title, description, icon }: ExampleCardProps) {
   );
 }
 
+import { useLanguage } from "./LanguageProvider";
+
 export function ExamplesSection() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftGradient, setShowLeftGradient] = useState(false);
@@ -37,41 +39,42 @@ export function ExamplesSection() {
   const [isPaused, setIsPaused] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useLanguage();
 
   const examples = [
     {
-      title: "Portfolios",
-      description: "Showcase your work with stunning, minimalist designs that put your creativity front and center.",
+      title: t("card.portfolios"),
+      description: t("card.portfolios.desc"),
       icon: <Briefcase size={24} strokeWidth={1.5} />,
     },
     {
-      title: "Websites",
-      description: "Custom built websites that tell your story and connect with your audience in meaningful ways.",
+      title: t("card.websites"),
+      description: t("card.websites.desc"),
       icon: <Globe size={24} strokeWidth={1.5} />,
     },
     {
-      title: "Reservations",
-      description: "Seamless booking systems for restaurants, hotels, and service-based businesses.",
+      title: t("card.reservations"),
+      description: t("card.reservations.desc"),
       icon: <Calendar size={24} strokeWidth={1.5} />,
     },
     {
-      title: "E-commerce",
-      description: "Powerful online stores designed to convert visitors into customers with smooth checkout experiences.",
+      title: t("card.ecommerce"),
+      description: t("card.ecommerce.desc"),
       icon: <ShoppingBag size={24} strokeWidth={1.5} />,
     },
     {
-      title: "Landing Pages",
-      description: "High-conversion landing pages optimized for marketing campaigns and product launches.",
+      title: t("card.landing"),
+      description: t("card.landing.desc"),
       icon: <ArrowRight size={24} strokeWidth={1.5} />,
     },
     {
-      title: "Automation",
-      description: "Streamline your workflows with smart automation tools that save time and reduce errors.",
+      title: t("card.automation"),
+      description: t("card.automation.desc"),
       icon: <Settings2 size={24} strokeWidth={1.5} />,
     },
     {
-      title: "Any other project",
-      description: "Have a unique idea? Let's bring it to life with custom solutions tailored to your specific needs.",
+      title: t("card.other"),
+      description: t("card.other.desc"),
       icon: <Sparkles size={24} strokeWidth={1.5} />,
     },
   ];
@@ -119,7 +122,7 @@ export function ExamplesSection() {
     animationFrameId = requestAnimationFrame(scroll);
 
     return () => cancelAnimationFrame(animationFrameId);
-  }, [isPaused]);
+  }, [isPaused, displayExamples.length]);
 
   // Intersection Observer for animations
   useEffect(() => {
@@ -154,16 +157,15 @@ export function ExamplesSection() {
             }`}
             style={{ transitionDelay: "100ms" }}
           >
-            Everything you need.
+            {t("examples.title")}
           </h2>
           <p 
-            className={`text-lg text-gray-500 max-w-2xl font-light opacity-0 translate-y-4 transition-all duration-700 ease-out ${
+            className={`text-lg text-section-text/60 max-w-2xl font-light opacity-0 translate-y-4 transition-all duration-700 ease-out ${
               isVisible ? "opacity-100 translate-y-0" : ""
             }`}
             style={{ transitionDelay: "300ms" }}
           >
-            From personal portfolios to full-scale e-commerce solutions, 
-            I build digital experiences that matter.
+            {t("examples.subtitle")}
           </p>
         </div>
 
@@ -177,14 +179,14 @@ export function ExamplesSection() {
         >
           {/* Left Gradient Overlay */}
           <div 
-            className={`absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none transition-opacity duration-300 ${
+            className={`absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-section-bg to-transparent z-10 pointer-events-none transition-opacity duration-300 ${
               showLeftGradient ? "opacity-100" : "opacity-0"
             }`} 
           />
           
           {/* Right Gradient Overlay */}
           <div 
-            className={`absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none transition-opacity duration-300 ${
+            className={`absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-section-bg to-transparent z-10 pointer-events-none transition-opacity duration-300 ${
               showRightGradient ? "opacity-100" : "opacity-0"
             }`} 
           />

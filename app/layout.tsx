@@ -8,6 +8,8 @@ export const metadata: Metadata = {
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import { LanguageProvider } from "@/components/LanguageProvider";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export default function RootLayout({
   children,
@@ -17,10 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body style={{ fontFamily: "'Helvetica Neue', 'Arial', sans-serif" }}>
-        <ThemeProvider>
-          <ThemeSwitcher />
-          {children}
-        </ThemeProvider>
+        <LanguageProvider>
+          <ThemeProvider>
+            <LanguageSwitcher />
+            <ThemeSwitcher />
+            {children}
+          </ThemeProvider>
+        </LanguageProvider>
       </body>
     </html>
   );
