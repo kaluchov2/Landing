@@ -2,6 +2,7 @@
 
 import { IdeaSubmissionForm } from "./IdeaSubmissionForm";
 import { WaterdropCursor } from "./WaterdropCursor";
+import { CountdownTimer } from "./CountdownTimer";
 import { useState, useEffect, useRef } from "react";
 
 import { useTheme } from "./ThemeProvider";
@@ -57,6 +58,7 @@ export function HeroSection() {
 
         <div className={mounted ? "animate-text-fade-in-up-delay-3" : ""}>
           <IdeaSubmissionForm />
+          <CountdownTimer />
         </div>
       </div>
     </section>
