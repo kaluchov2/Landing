@@ -12,6 +12,11 @@ const config: Config = {
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        'hero-bg': "hsl(var(--hero-bg))",
+        'hero-text': "hsl(var(--hero-text))",
+        'section-bg': "hsl(var(--section-bg))",
+        'section-text': "hsl(var(--section-text))",
+        'section-card-bg': "hsl(var(--section-card-bg))",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",

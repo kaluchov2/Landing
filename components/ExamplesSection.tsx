@@ -13,15 +13,15 @@ interface ExampleCardProps {
 function ExampleCard({ title, description, icon }: ExampleCardProps) {
   return (
     <div className="flex-none w-72 sm:w-80 md:w-96 mr-6 last:mr-0">
-      <div className="bg-gray-50 border border-gray-100 p-8 rounded-2xl h-full flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
+      <div className="bg-section-card-bg border border-gray-100 p-8 rounded-2xl h-full flex flex-col justify-between hover:shadow-lg transition-all duration-300">
         <div>
-          <div className="bg-white p-4 rounded-xl inline-block mb-6 shadow-sm text-black">
+          <div className="bg-section-bg p-4 rounded-xl inline-block mb-6 shadow-sm text-section-text border border-gray-100/50">
             {icon}
           </div>
-          <h3 className="text-2xl font-light text-black mb-3 text-left">
+          <h3 className="text-2xl font-light text-section-text mb-3 text-left">
             {title}
           </h3>
-          <p className="text-gray-500 font-light leading-relaxed text-left">
+          <p className="text-section-text/60 font-light leading-relaxed text-left">
             {description}
           </p>
         </div>
@@ -35,6 +35,8 @@ export function ExamplesSection() {
   const [showLeftGradient, setShowLeftGradient] = useState(false);
   const [showRightGradient, setShowRightGradient] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   const examples = [
     {
@@ -119,27 +121,57 @@ export function ExamplesSection() {
     return () => cancelAnimationFrame(animationFrameId);
   }, [isPaused]);
 
-  const sectionRef = useRef<HTMLElement>(null);
+  // Intersection Observer for animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // Only animate once
+        }
+      },
+      { threshold: 0.1 } // Trigger when 10% visible
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section 
       ref={sectionRef}
-      className="py-24 bg-white text-black overflow-hidden relative cursor-none"
+      className="py-24 bg-section-bg text-section-text overflow-hidden relative cursor-none transition-colors duration-500"
     >
       <WaterdropCursor sectionRef={sectionRef} theme="dark" />
       <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
         <div className="mb-16">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extralight tracking-tight mb-6">
+          <h2 
+            className={`text-4xl sm:text-5xl lg:text-6xl font-extralight tracking-tight mb-6 opacity-0 translate-y-4 transition-all duration-700 ease-out ${
+              isVisible ? "opacity-100 translate-y-0" : ""
+            }`}
+            style={{ transitionDelay: "100ms" }}
+          >
             Everything you need.
           </h2>
-          <p className="text-lg text-gray-500 max-w-2xl font-light">
+          <p 
+            className={`text-lg text-gray-500 max-w-2xl font-light opacity-0 translate-y-4 transition-all duration-700 ease-out ${
+              isVisible ? "opacity-100 translate-y-0" : ""
+            }`}
+            style={{ transitionDelay: "300ms" }}
+          >
             From personal portfolios to full-scale e-commerce solutions, 
             I build digital experiences that matter.
           </p>
         </div>
 
         <div 
-          className="relative"
+          className={`relative opacity-0 translate-y-8 transition-all duration-1000 ease-out ${
+            isVisible ? "opacity-100 translate-y-0" : ""
+          }`}
+          style={{ transitionDelay: "500ms" }}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >

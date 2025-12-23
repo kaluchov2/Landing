@@ -106,7 +106,7 @@ export function IdeaSubmissionForm() {
           I have an idea...
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[500px] bg-black border-white/10">
+      <DialogContent className="sm:max-w-[500px] bg-black/40 backdrop-blur-xl border-white/10 shadow-2xl">
         <DialogHeader>
           <DialogTitle
             className="text-white tracking-wider uppercase text-sm mb-2"
@@ -132,8 +132,8 @@ export function IdeaSubmissionForm() {
         {submitStatus === "success" ? (
           <div className="flex flex-col items-center justify-center py-8 text-center">
             <CheckCircle2 className="h-16 w-16 text-green-500 mb-4" />
-            <h3 className="text-lg font-semibold mb-2">Thank you!</h3>
-            <p className="text-sm text-muted-foreground">
+            <h3 className="text-lg font-semibold mb-2 text-white">Thank you!</h3>
+            <p className="text-sm text-white/60">
               Your idea has been submitted successfully. I&apos;ll get back to
               you soon!
             </p>
@@ -143,7 +143,7 @@ export function IdeaSubmissionForm() {
             <div className="space-y-2">
               <label
                 htmlFor="email"
-                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                className="text-sm font-medium leading-none text-white/80"
               >
                 Email
               </label>
@@ -153,10 +153,12 @@ export function IdeaSubmissionForm() {
                 placeholder="your.email@example.com"
                 {...register("email")}
                 disabled={isSubmitting}
-                className={errors.email ? "border-red-500" : ""}
+                className={`bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-white/20 focus-visible:border-white/30 ${
+                  errors.email ? "border-red-500/50 focus-visible:border-red-500" : ""
+                }`}
               />
               {errors.email && (
-                <p className="text-sm text-red-500 flex items-center gap-1">
+                <p className="text-sm text-red-400 flex items-center gap-1">
                   <AlertCircle className="h-3 w-3" />
                   {errors.email.message}
                 </p>
@@ -166,7 +168,7 @@ export function IdeaSubmissionForm() {
             <div className="space-y-2">
               <label
                 htmlFor="message"
-                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                className="text-sm font-medium leading-none text-white/80"
               >
                 Your Idea
               </label>
@@ -176,10 +178,12 @@ export function IdeaSubmissionForm() {
                 rows={6}
                 {...register("message")}
                 disabled={isSubmitting}
-                className={errors.message ? "border-red-500" : ""}
+                className={`bg-white/5 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-white/20 focus-visible:border-white/30 resize-none ${
+                  errors.message ? "border-red-500/50 focus-visible:border-red-500" : ""
+                }`}
               />
               {errors.message && (
-                <p className="text-sm text-red-500 flex items-center gap-1">
+                <p className="text-sm text-red-400 flex items-center gap-1">
                   <AlertCircle className="h-3 w-3" />
                   {errors.message.message}
                 </p>
@@ -187,15 +191,19 @@ export function IdeaSubmissionForm() {
             </div>
 
             {submitStatus === "error" && (
-              <div className="p-3 rounded-md bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
-                <p className="text-sm text-red-600 dark:text-red-400 flex items-center gap-2">
+              <div className="p-3 rounded-md bg-red-900/20 border border-red-500/20">
+                <p className="text-sm text-red-400 flex items-center gap-2">
                   <AlertCircle className="h-4 w-4" />
                   {errorMessage}
                 </p>
               </div>
             )}
 
-            <Button type="submit" className="w-full" disabled={isSubmitting}>
+            <Button 
+              type="submit" 
+              className="w-full bg-white text-black hover:bg-gray-200 transition-colors"
+              disabled={isSubmitting}
+            >
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
