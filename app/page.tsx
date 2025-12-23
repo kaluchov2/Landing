@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { LoadingScreen } from "@/components/LoadingScreen";
 import { HeroSection } from "@/components/HeroSection";
+import { ExamplesSection } from "@/components/ExamplesSection";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,7 +26,12 @@ export default function Home() {
   return (
     <main>
       {isLoading && <LoadingScreen />}
-      {!isLoading && <HeroSection />}
+      {!isLoading && (
+        <>
+          <HeroSection />
+          <ExamplesSection />
+        </>
+      )}
     </main>
   );
 }

@@ -1,17 +1,23 @@
 "use client";
 
 import { IdeaSubmissionForm } from "./IdeaSubmissionForm";
-import { useState, useEffect } from "react";
+import { WaterdropCursor } from "./WaterdropCursor";
+import { useState, useEffect, useRef } from "react";
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
+    >
+      <WaterdropCursor sectionRef={sectionRef} />
       <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
         {/* Minimal header */}
         <h1

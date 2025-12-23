@@ -118,7 +118,8 @@
 }
 
 @keyframes run {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(-50%) translateY(0) scale(1);
   }
   50% {
@@ -274,7 +275,7 @@
 
 .track::before,
 .track::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -292,7 +293,8 @@
 }
 
 @keyframes run {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -301,7 +303,8 @@
 }
 
 @keyframes armSwingLeft {
-  0%, 100% {
+  0%,
+  100% {
     transform: rotate(-20deg);
   }
   50% {
@@ -310,7 +313,8 @@
 }
 
 @keyframes armSwingRight {
-  0%, 100% {
+  0%,
+  100% {
     transform: rotate(20deg);
   }
   50% {
@@ -319,7 +323,8 @@
 }
 
 @keyframes legSwingLeft {
-  0%, 100% {
+  0%,
+  100% {
     transform: rotate(15deg);
   }
   50% {
@@ -328,7 +333,8 @@
 }
 
 @keyframes legSwingRight {
-  0%, 100% {
+  0%,
+  100% {
     transform: rotate(-15deg);
   }
   50% {
@@ -378,3 +384,50 @@
   opacity: 0;
 }
 
+/* Waterdrop Cursor Animations */
+@keyframes ripple-expand {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 1;
+    border-width: 2px;
+  }
+  30% {
+    opacity: 0.8;
+    border-width: 1.5px;
+  }
+  100% {
+    width: 150px;
+    height: 150px;
+    opacity: 0;
+    border-width: 0.5px;
+  }
+}
+
+@keyframes ripple-expand-inner {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 0.6;
+  }
+  50% {
+    width: 30px;
+    height: 30px;
+    opacity: 0.3;
+  }
+  100% {
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+  }
+}
+
+@keyframes waterdrop-float {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translateY(0px);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-2px);
+  }
+}
