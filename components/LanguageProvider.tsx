@@ -14,8 +14,8 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 const translations: Record<Language, Record<string, string>> = {
   en: {
-    "hero.title": "Thank you for being here...",
-    "hero.subtitle": "Feel at home here, feel free to explore and get to know me.",
+    "hero.title": "Hello!",
+    "hero.subtitle": "Now that you're here, share your idea :) or keep reading to know more",
     "form.button": "I have an idea...",
     "form.modal.title": "Project Proposal",
     "form.modal.desc": "Submit your project concept",
@@ -25,8 +25,8 @@ const translations: Record<Language, Record<string, string>> = {
     "form.submitting": "Submitting...",
     "form.success.title": "Thank you!",
     "form.success.desc": "Your idea has been submitted successfully. I'll get back to you soon!",
-    "examples.title": "Everything you need.",
-    "examples.subtitle": "From personal portfolios to full-scale e-commerce solutions, I build digital experiences that matter.",
+    "examples.title": "As part of my 2026 goals",
+    "examples.subtitle": "I want to help create projects and add them to my portfolio, with AI creating software is much faster and more efficient than before, and not with exorbitant prices. That's why and more I want to start creating projects with AI. Or help you use tools for free, for the love of art",
     "card.portfolios": "Portfolios",
     "card.portfolios.desc": "Showcase your work with stunning, minimalist designs that put your creativity front and center.",
     "card.websites": "Websites",
@@ -49,8 +49,8 @@ const translations: Record<Language, Record<string, string>> = {
     "countdown.seconds": "Seconds",
   },
   es: {
-    "hero.title": "Gracias por estar aquí...",
-    "hero.subtitle": "Siéntete como en casa, explora libremente y conóceme mejor.",
+    "hero.title": "Hola ! :)",
+    "hero.subtitle": "Ya que llegaste hasta acá, porfavor comparte tu idea :) O lee hasta abajo para conocer los detalles",
     "form.button": "Tengo una idea...",
     "form.modal.title": "Propuesta de Proyecto",
     "form.modal.desc": "Envía tu concepto de proyecto",
@@ -60,8 +60,8 @@ const translations: Record<Language, Record<string, string>> = {
     "form.submitting": "Enviando...",
     "form.success.title": "¡Gracias!",
     "form.success.desc": "Tu idea ha sido enviada con éxito. ¡Te contactaré pronto!",
-    "examples.title": "Todo lo que necesitas.",
-    "examples.subtitle": "Desde portafolios personales hasta soluciones de comercio electrónico a gran escala, construyo experiencias digitales que importan.",
+    "examples.title": "Como objetivo de mi 2026",
+    "examples.subtitle": "Quiero ayudar a crear proyectos y de paso agregarlos a mi portafolio..., con la IA crear software es mucho mas rápido y eficiente que antes, y no con precios exagerados. Por eso y mas quiero empezar a crear proyectos con IA. O ayudarte a utilizar herramientas GRATIS, por amor al arte",
     "card.portfolios": "Portafolios",
     "card.portfolios.desc": "Muestra tu trabajo con diseños minimalistas impresionantes que ponen tu creatividad en el centro.",
     "card.websites": "Sitios Web",
